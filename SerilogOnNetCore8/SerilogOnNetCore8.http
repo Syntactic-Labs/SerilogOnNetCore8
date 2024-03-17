@@ -1,0 +1,6 @@
+@SerilogOnNetCore8_HostAddress = http://localhost:5046
+
+GET {{SerilogOnNetCore8_HostAddress}}/GetParent/
+Accept: application/json
+
+###
