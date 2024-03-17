@@ -21,7 +21,7 @@ public class ParentsController(IParentService parentService, ILogger<ParentsCont
 			//This shows you the request payload before its touched.
 			_logger.LogInformation($"Request: --{guid}-- {parentId}");
 			Parent? parent = await _parentService.GetParent(parentId);
-			//This shows you way you gave them back. The guid pairs the request with everything tied to it.
+			//This shows you what you give back to them. The guid pairs the request with everything tied to it.
 			//Don't forget to serialize from Object to string for the logger to be happy.
 			_logger.LogInformation($"Response: --{guid}-- {JsonSerializer.Serialize(parent)}");
 
@@ -29,7 +29,7 @@ public class ParentsController(IParentService parentService, ILogger<ParentsCont
 		}
 		catch (ArgumentException aE)
 		{
-			//Where we can we atleast want to divide out 400s and 500s.
+			//We want to atleast 400s and 500s.
 			//400 means consumer is wrong. 500 means server or backend is wrong.
 			_logger.LogError(aE, $"Error: --{guid}-- {aE.Message}");
 			return BadRequest(aE.Message);
